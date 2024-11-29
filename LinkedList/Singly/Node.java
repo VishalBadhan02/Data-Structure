@@ -72,10 +72,14 @@ public class Node {
 
         Node current = next;
         int count = 1;
-        while (current != null && count < position) {
-            System.out.println("here");
+        while (current != null && count < position - 1) {
             current = current.next;
             count++;
+        }
+
+        if (current == null) {
+            System.out.println("Position out of range");
+            return next;
         }
 
         newNode.next = current.next;
@@ -94,9 +98,8 @@ public class Node {
         // node.searchLinkedList(node, 20);
         node = node.insertAtBegning(node, 5);
         node.insertAtEnd(node, 40);
-        node.traverseLinkedList();
-
         node = node.insertAtRandomlocation(node, 3, 25);
+        node.traverseLinkedList();
 
     }
 }
