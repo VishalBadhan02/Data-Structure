@@ -88,6 +88,10 @@ public class Node {
         return next;
     }
 
+    public void removeFirstNode(Node next) {
+
+    }
+
     public static void main(String args[]) {
         Node node = new Node(10);
         Node node1 = new Node(20);
