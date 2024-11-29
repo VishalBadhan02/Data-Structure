@@ -88,8 +88,14 @@ public class Node {
         return next;
     }
 
-    public void removeFirstNode(Node next) {
+    public Node removeFirstNode(Node next) {
+        if (next == null) {
+            return next;
+        }
 
+        Node current = next;
+        next = current.next;
+        return next;
     }
 
     public static void main(String args[]) {
@@ -99,10 +105,11 @@ public class Node {
 
         node.next = node1;
         node1.next = node3;
-        // node.searchLinkedList(node, 20);
+        node.searchLinkedList(node, 20);
         node = node.insertAtBegning(node, 5);
         node.insertAtEnd(node, 40);
         node = node.insertAtRandomlocation(node, 3, 25);
+        node = node.removeFirstNode(node);
         node.traverseLinkedList();
 
     }
