@@ -11,8 +11,27 @@ public class Node {
 
     public void traverseLinkedList(Node next) {
         Node current = next;
+        int count = 0;
+
         while (current != null) {
-            
+            count++;
+            System.out.println("Node " + count + " data " + (current.data + 1));
+            current = current.next;
+        }
+    }
+
+    public void searchLinkedList(Node next, int target) {
+        Node current = next;
+
+        while (current != null) {
+            // System.out.println(target + " and value : " + current.data);
+            if (current.data == target) {
+                System.out.println("Searching done target value founded : " + target);
+                break;
+            } else {
+                System.out.println("value not found");
+            }
+            current = current.next;
         }
     }
 
@@ -23,18 +42,8 @@ public class Node {
 
         node.next = node1;
         node1.next = node3;
+        node.traverseLinkedList(node);
+        node.searchLinkedList(node, 10);
 
-        if (node.next != null) {
-            System.out.println("First node's next is linked to: " + node.next.data);
-        } else {
-            Node current = node;
-            int count = 0;
-
-            while (current != null) {
-                count++;
-                System.out.println("Node " + count + " data " + current.data);
-                current = current.next;
-            }
-        }
     }
 }
