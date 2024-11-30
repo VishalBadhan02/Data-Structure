@@ -98,6 +98,17 @@ public class Node {
         return next;
     }
 
+    public void removeLastNode(Node next) {
+        if (next == null) {
+            return;
+        }
+
+        Node current = next;
+        while (current != null) {
+
+        }
+    }
+
     public static void main(String args[]) {
         Node node = new Node(10);
         Node node1 = new Node(20);
