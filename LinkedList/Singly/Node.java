@@ -103,10 +103,18 @@ public class Node {
             return;
         }
 
-        Node current = next;
-        while (current != null) {
-
+        if (next.next == null) {
+            next = null;
+            return;
         }
+
+        Node current = next;
+        while (current.next.next != null) {
+            current = current.next;
+        }
+
+        current.next = null;
+
     }
 
     public static void main(String args[]) {
@@ -121,6 +129,7 @@ public class Node {
         node.insertAtEnd(node, 40);
         node = node.insertAtRandomlocation(node, 3, 25);
         node = node.removeFirstNode(node);
+        node.removeLastNode(node);
         node.traverseLinkedList();
 
     }
