@@ -36,7 +36,6 @@ public class Node {
         Node newNode = new Node(data);
 
         Node current = next;
-        current.pre = newNode;
         newNode.next = current;
 
         return newNode;
@@ -86,6 +85,30 @@ public class Node {
 
     }
 
+    public Node removeAtstart(Node next) {
+        Node current = next;
+        next = next.next;
+
+        if (current != null) {
+            current = null;
+        }
+        return next;
+
+    }
+
+    public void removeAtEnd(Node next) {
+        Node current = next;
+
+        while (current != null) {
+            current = current.next;
+        }
+
+        Node previous = current.pre;
+        if (previous != null) {
+            previous.next = null;
+        }
+    }
+
     public static void main(String args[]) {
         Node node = null;
         node = new Node(10);
@@ -103,6 +126,8 @@ public class Node {
         node = node.insertAtBegning(node, 5);
         node.insertAtEnd(node, 50);
         node = node.insertAtRandom(node, 25, 4);
+        node = node.removeAtstart(node);
+        node.removeAtEnd(node);
 
         node = node.forwardtraversing(node);
         // node.backwordtraversing(node3);
