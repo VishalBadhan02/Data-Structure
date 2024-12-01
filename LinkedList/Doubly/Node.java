@@ -127,6 +127,8 @@ public class Node {
         while (current.next != null && count < position - 1) {
             current = current.next;
         }
+        System.out.println(current);
+        current.next = current.next.next;
 
         return next;
     }
@@ -150,7 +152,7 @@ public class Node {
         node = node.insertAtRandom(node, 25, 4);
         node = node.removeAtstart(node);
         node.removeAtEnd(node);
-        node = node.removeAtRandom(node, 3);
+        node = node.removeAtRandom(node, 2);
 
         node = node.forwardtraversing(node);
         // node.backwordtraversing(node3);
