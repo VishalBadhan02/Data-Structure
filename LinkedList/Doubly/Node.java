@@ -127,9 +127,9 @@ public class Node {
         while (current.next != null && count < position - 1) {
             current = current.next;
         }
-        System.out.println(current);
-        current.next = current.next.next;
-
+        if (current.next != null) {
+            current.next = current.next.next;
+        }
         return next;
     }
 
