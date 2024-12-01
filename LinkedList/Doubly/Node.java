@@ -99,7 +99,7 @@ public class Node {
     public void removeAtEnd(Node next) {
         Node current = next;
 
-        while (current != null) {
+        while (current.next != null) {
             current = current.next;
         }
 
@@ -107,6 +107,28 @@ public class Node {
         if (previous != null) {
             previous.next = null;
         }
+    }
+
+    public Node removeAtRandom(Node next, int position) {
+        Node current = next;
+
+        if (position < 1) {
+            System.out.println("invalid positon");
+            return next;
+        }
+
+        if (position == 1) {
+            next = next.next;
+            current = null;
+            return next;
+        }
+
+        int count = 1;
+        while (current.next != null && count < position - 1) {
+            current = current.next;
+        }
+
+        return next;
     }
 
     public static void main(String args[]) {
@@ -128,6 +150,7 @@ public class Node {
         node = node.insertAtRandom(node, 25, 4);
         node = node.removeAtstart(node);
         node.removeAtEnd(node);
+        node = node.removeAtRandom(node, 3);
 
         node = node.forwardtraversing(node);
         // node.backwordtraversing(node3);
