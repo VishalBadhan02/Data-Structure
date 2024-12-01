@@ -9,6 +9,10 @@ public class Node {
         prev = next = null;
     }
 
+    public void forwardtraversing(Node next) {
+        
+    }
+
     public static void main(String[] args) {
         Node node = null;
         node = new Node(20);
