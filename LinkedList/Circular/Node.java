@@ -10,7 +10,11 @@ public class Node {
     }
 
     public void forwardtraversing(Node next) {
-        
+        Node current = next;
+        while (current != null) {
+            System.out.println(current.data);
+            current = current.next;
+        }
     }
 
     public static void main(String[] args) {
@@ -27,5 +31,6 @@ public class Node {
         node2.next = node3;
         node3.prev = node2;
         node3.next = node;
+        node.forwardtraversing(node);
     }
 }
