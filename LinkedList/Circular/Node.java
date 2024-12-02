@@ -11,12 +11,11 @@ public class Node {
 
     public void forwardtraversing(Node next) {
         Node current = next;
-        while (current != null) {
+        do {
             System.out.println("data " + current.data);
             current = current.next;
-            if (current.prev == null)
-                break;
-        }
+        } while (current != next);
+
     }
 
     static Node insertionInEmpty(Node next, int data) {
@@ -30,35 +29,73 @@ public class Node {
         return next;
     }
 
-    static Node insertionInBegning(Node next, int data) {
+    static Node insertionInbegning(Node next, int data) {
         Node newNode = new Node(data);
+
+        Node current = next;
+        while (current.next != next) {
+            current = current.next;
+        }
+
         if (next != null) {
             newNode.next = next;
-            next.next = newNode;
+            current.next = newNode;
+            next = newNode;
         }
         return newNode;
 
     }
 
+    static void insertionAtEnd(Node next, int data) {
+        Node newNode = new Node(data);
+
+        Node last = next;
+
+        while (last.next != next) {
+            last = last.next;
+        }
+
+        newNode.next = last.next;
+        last.next = newNode;
+    }
+
+    static void insertionAtRandom(Node next, int data, int position) {
+        if (position < 1) {
+            return;
+        }
+
+        Node newNode = new Node(data);
+
+        Node current = next;
+        while (current.next != next) {
+            current = current.next;
+        }
+
+        if (position == 1) {
+            newNode.next = next;
+            current.next = newNode;
+        }
+
+        int count = 0;
+        Node last = next;
+        while (last.next != next && count < position - 1) {
+            last = last.next;
+            count++;
+        }
+
+        newNode.next = last.next;
+        last.next = newNode;
+
+    }
+
     public static void main(String[] args) {
         Node node = null;
-        node = insertionInEmpty(node, 10);
-        // Node node1 = new Node(20);
-        // node.next = node1;
-        // node1.prev = node;
-        // node1.next = node;
-        node = insertionInBegning(node, 20);
-        // Node node1 = new Node(30);
-        // Node node2 = new Node(40);
-        // Node node3 = new Node(50);
-
-        // node.next = node1;
-        // node1.prev = node;
-        // node1.next = node2;
-        // node2.prev = node1;
-        // node2.next = node3;
-        // node3.prev = node2;
-        // node3.next = node;
+        node = insertionInEmpty(node, 30);
+        node = insertionInbegning(node, 20);
+        node = insertionInbegning(node, 10);
+        insertionAtEnd(node, 40);
+        insertionAtRandom(node, 25, 2);
         node.forwardtraversing(node);
+
     }
 }
